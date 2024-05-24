@@ -14,7 +14,7 @@ pipeline{
         stage('Show Release') {
             steps {
                 bat """
-                sh -c "cat /etc/os-release"
+                sh -c "ls /"
                  """
             }
         }

@@ -21,7 +21,7 @@ pipeline{
         stage('Initialisation') {
             steps {
                 bat """
-		mvn test
+                sh -c "Initialisation"
                  """
             }
         }
@@ -29,7 +29,7 @@ pipeline{
         stage('Unit Test') {
             steps {
                 bat """
-                sh -c "echo Unit Test"
+                mvn test
                  """
             }
         }

@@ -21,7 +21,7 @@ pipeline{
         stage('Initialisation') {
             steps {
                 bat """
-                sh -c "Initialisation"
+                sh -c "echo Initialisation !!!"
                  """
             }
         }

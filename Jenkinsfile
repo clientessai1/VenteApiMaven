@@ -18,18 +18,19 @@ pipeline{
                  """
             }
         }
-        stage('Initialisation') {
-            steps {
-                bat """
-                sh -c "echo Initialisation !!!"
-                 """
-            }
-        }
 
         stage('Unit Test') {
             steps {
                 bat """
                 mvn test
+                 """
+            }
+        }
+
+        stage('Compile Application') {
+            steps {
+                bat """
+				mvn clean install
                  """
             }
         }

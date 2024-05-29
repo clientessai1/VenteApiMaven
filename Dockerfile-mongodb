@@ -1,0 +1,19 @@
+# Use the official MongoDB image as the base image
+FROM docker.io/mongo:4.4.3
+
+# Set environment variables for MongoDB initialization
+ENV MONGO_INITDB_ROOT_USERNAME=root
+ENV MONGO_INITDB_ROOT_PASSWORD=root
+
+# Copy modified MongoDB configuration file into the image
+#ADD mongod.conf /etc/mongod.conf
+ADD docker-elts/mongod.conf /etc/mongod.conf
+
+# Copy MongoDB initialization scripts into the container
+COPY ./docker-elts/mongo-scripts /docker-entrypoint-initdb.d/
+
+# Set the entry point to the default MongoDB entry point script
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+# Start MongoDB with authentication enabled
+CMD ["mongod", "--auth"]

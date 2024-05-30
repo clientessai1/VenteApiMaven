@@ -30,7 +30,7 @@ pipeline{
         stage('Compile Application') {
             steps {
                 bat """
-                sh -c "eco mvn clean install..."
+                sh -c "echo mvn clean install..."
                  """
             }
         }

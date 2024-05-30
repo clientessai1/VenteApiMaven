@@ -30,7 +30,8 @@ pipeline{
         stage('Compile Application') {
             steps {
                 bat """
-				mvn clean install
+                sh -c "echo compile application !!!"
+				#mvn clean install
                  """
             }
         }
@@ -39,6 +40,7 @@ pipeline{
             steps {
                 bat """
                 sh -c "echo Build docker image Process"
+                sh -c "wsl docker-compose -version"
                  """
             }
         }

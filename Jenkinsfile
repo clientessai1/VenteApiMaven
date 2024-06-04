@@ -1,6 +1,7 @@
 pipeline{
 
-    agent any
+#    agent any
+    agent { label('windows') }
 
     stages{
         stage('Echo') {

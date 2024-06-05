@@ -1,11 +1,11 @@
 pipeline{
 
-    agent { label('windows') }
+    agent { label('ubuntu-dev-agent') }
 
     stages{
         stage('Echo') {
             steps{
-                bat """
+                sh """
                      sh -c "echo Je suis ici !"
                  """
                 }
@@ -13,7 +13,7 @@ pipeline{
 
         stage('Show Release') {
             steps {
-                bat """
+                sh """
                 sh -c "ls /"
                  """
             }
@@ -21,15 +21,15 @@ pipeline{
 
         stage('Unit Test') {
             steps {
-                bat """
-                mvn test
+                sh """
+                sh -c "echo mvn test"
                  """
             }
         }
 
         stage('Compile Application') {
             steps {
-                bat """
+                sh """
                 sh -c "echo mvn clean install..."
                  """
             }
@@ -37,9 +37,9 @@ pipeline{
 
         stage('Build docker image') {
             steps {
-                bat """
+                sh """
                 sh -c "echo Build docker image Process"
-                sh -c "wsl docker-compose -version"
+                sh -c "docker-compose -version"
                  """
             }
         }
@@ -47,7 +47,7 @@ pipeline{
 
         stage('Test docker image') { 
             steps {
-                bat """
+                sh """
                 sh -c " echo Test docker image !!!"
                  """
             }
@@ -56,7 +56,7 @@ pipeline{
                 
         stage('Cleanup ') {
             steps {
-                bat """
+                sh """
                 sh -c "echo CleanUp stage !!!"
                  """
             }
@@ -64,7 +64,7 @@ pipeline{
 
         stage("Push image to Docker Hub"){
             steps{
-                bat """
+                sh """
                 sh -c "echo Push image to Docker Hub !!!"
                  """
                 }

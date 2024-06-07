@@ -1,6 +1,10 @@
 pipeline{
 
     agent { label('ubuntu-dev-agent') }
+    
+    tools{
+        maven 'Maven 3.9.3'
+    }
 
     stages{
         stage('Echo') {
@@ -30,7 +34,7 @@ pipeline{
         stage('Compile Application') {
             steps {
                 sh """
-                sh -c "mvn clean install"
+                sh -c "echo mvn clean install"
                  """
             }
         }
@@ -39,7 +43,7 @@ pipeline{
             steps {
                 sh """
                 sh -c "echo Build docker image Process"
-                sh -c "docker-compose up --build"
+                sh -c "echo docker-compose up --build"
                  """
             }
         }

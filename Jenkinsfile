@@ -43,7 +43,7 @@ pipeline{
             steps {
                 sh """
                 sh -c "echo Build docker image Process"
-                sh -c "docker-compose up --build"
+                sh -c "docker-compose up --build -d"
                  """
             }
         }

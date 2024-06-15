@@ -1,7 +1,10 @@
 version: "3.7"
 services:
   user_service:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aristidesama2/venteapimaven_img_app:v1
     restart: always
     ports:
       - 8080:8080
@@ -11,6 +14,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-mongodb
+    image: aristidesama2/venteapimaven_img_mongodb:v1
     container_name: venteapimaven_mongo_db_1
     restart: always
     ports:

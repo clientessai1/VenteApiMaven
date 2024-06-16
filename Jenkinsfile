@@ -26,7 +26,7 @@ pipeline{
         stage('Unit Test') {
             steps {
                 sh """
-                sh -c "echo mvn test"
+                sh -c "echo  mvn test"
                  """
             }
         }

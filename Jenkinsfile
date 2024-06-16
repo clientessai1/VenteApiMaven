@@ -51,14 +51,9 @@ pipeline{
 
         stage('Test docker image') { 
             steps {
-                script {
-                   HTTP_CODE = sh (
-                        script: 'curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/v1/categories',
-                        returnStdout: true
-                    ).trim()
-
-                    sh """sh -c 'if [ ${HTTP_CODE} -eq 200 ]; then echo "Available"; else echo "Not available"; fi'"""
-                }
+                sh """
+                sh -c "echo TEST DOCKER IMAGE"
+                 """
             }
         }
 

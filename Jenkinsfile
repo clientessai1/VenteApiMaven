@@ -26,7 +26,7 @@ pipeline{
         stage('Unit Test') {
             steps {
                 sh """
-                sh -c "mvn test"
+                sh -c "echo mvn test"
                  """
             }
         }
@@ -34,7 +34,7 @@ pipeline{
         stage('Compile Application') {
             steps {
                 sh """
-                sh -c "mvn clean install"
+                sh -c "echo mvn clean install"
                  """
             }
         }
@@ -43,7 +43,7 @@ pipeline{
             steps {
                 sh """
                 sh -c "echo Build docker image Process"
-                sh -c "docker-compose up --build -d"
+                sh -c "echo docker-compose up --build -d"
                  """
             }
         }

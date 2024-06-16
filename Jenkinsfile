@@ -52,7 +52,7 @@ pipeline{
         stage('Test docker image') { 
             steps {
                 sh """
-                sh -c "echo TEST DOCKER IMAGE"
+                sh -c "echo TEST  DOCKER IMAGE"
                  """
             }
         }

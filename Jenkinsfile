@@ -94,11 +94,16 @@ pipeline{
 
         stage("Push image to Docker Hub"){
             steps{
-                sh """
-                sh -c "echo Push image to Docker Hub !!!"
-                 """
+                withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS_ARIS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
+                    sh """
+                    docker logout  && \
+                    docker login  --username $USERNAME --password $PASSWORD && \
+                    docker push aristidesama2/venteapimaven_img_app:v1 && \
+                    docker push aristidesama2/venteapimaven_img_mongodb:v1
+                    """
                 }
             }
+        }
 
 
      }

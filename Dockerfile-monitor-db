@@ -1,0 +1,2 @@
+# Use the official MongoDB image as the base image
+FROM docker.io/mongo:4.4.3

@@ -20,6 +20,8 @@ services:
     ports:
       - 27017:27017
   mongo_shell:
-    image: "mongo:4.4.3"
-    depends_on:
-      - mongo_db
+    build:
+      context: .
+      dockerfile: Dockerfile-monitor-db
+    image: aristidesama2/venteapimaven_img_monitor-db:v1
+    container_name: venteapimaven_monitor-db

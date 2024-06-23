@@ -99,7 +99,8 @@ pipeline{
                     docker logout  && \
                     docker login  --username $USERNAME --password $PASSWORD && \
                     docker push aristidesama2/venteapimaven_img_app:v1 && \
-                    docker push aristidesama2/venteapimaven_img_mongodb:v1
+                    docker push aristidesama2/venteapimaven_img_mongodb:v1 && \
+                    docker push aristidesama2/venteapimaven_img_monitor-db:v1
                     """
                 }
             }

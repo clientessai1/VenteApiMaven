@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: aristidesama2/venteapimaven_img_app:v1
+    image: aristidesama2/venteapimaven_3of3_app:v1
     restart: always
     ports:
       - 8080:8080
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-mongodb
-    image: aristidesama2/venteapimaven_img_mongodb:v1
+    image: aristidesama2/venteapimaven_1of3_mongodb:v1
     container_name: venteapimaven_mongo_db_1
     restart: always
     ports:
@@ -23,5 +23,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-monitor-db
-    image: aristidesama2/venteapimaven_img_monitor-db:v1
+    image: aristidesama2/venteapimaven_2of3_monitor-db:v1
     container_name: venteapimaven_monitor-db

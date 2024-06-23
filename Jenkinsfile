@@ -98,9 +98,9 @@ pipeline{
                     sh """
                     docker logout  && \
                     docker login  --username $USERNAME --password $PASSWORD && \
-                    docker push aristidesama2/venteapimaven_img_app:v1 && \
-                    docker push aristidesama2/venteapimaven_img_mongodb:v1 && \
-                    docker push aristidesama2/venteapimaven_img_monitor-db:v1
+                    docker push aristidesama2/venteapimaven_3of3_app:v1 && \
+                    docker push aristidesama2/venteapimaven_1of3_mongodb:v1 && \
+                    docker push aristidesama2/venteapimaven_2of3_monitor-db:v1
                     """
                 }
             }

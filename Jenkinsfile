@@ -110,9 +110,10 @@ pipeline{
             steps {
                 sh """
                 sh -c "echo Kill and delete containers !!!"
-                docker inspect ${CONTAINER01}
+                docker kill ${CONTAINER01} ${CONTAINER02} ${CONTAINER03} && \
+                docker rm ${CONTAINER01} ${CONTAINER02} ${CONTAINER03}
                 sh -c "echo Delete images !!!"
-                docker image inspect ${IMAGE01}
+                docker rmi ${IMAGE01} ${IMAGE02} ${IMAGE03}
                  """
             }
         }

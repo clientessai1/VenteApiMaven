@@ -7,7 +7,15 @@ pipeline{
     tools{
         maven 'Maven 3.9.3'
     }
+    environment{
+        IMAGE01 = "aristidesama2/venteapimaven_1of3_mongodb:v1"
+        IMAGE02 = "aristidesama2/venteapimaven_2of3_monitor-db:v1"
+        IMAGE03 = "aristidesama2/venteapimaven_3of3_api:v1"
 
+        CONTAINER01 = "venteapimaven_mongo_db_1"
+        CONTAINER02 = "venteapimaven_monitor-db"
+        CONTAINER03 = "venteapimaven_api"
+    }
     stages{
         stage('Echo') {
             steps{
@@ -83,29 +91,31 @@ pipeline{
             }
         }
 
-                
-        stage('Cleanup ') {
-            steps {
-                sh """
-                sh -c "echo CleanUp stage !!!"
-                 """
-            }
-        }
-
         stage("Push image to Docker Hub"){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS_ARIS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
                     docker logout  && \
                     docker login  --username $USERNAME --password $PASSWORD && \
-                    docker push aristidesama2/venteapimaven_3of3_app:v1 && \
-                    docker push aristidesama2/venteapimaven_1of3_mongodb:v1 && \
-                    docker push aristidesama2/venteapimaven_2of3_monitor-db:v1
+                    docker push ${IMAGE03} && \
+                    docker push ${IMAGE02} && \
+                    docker push ${IMAGE01} 
                     """
                 }
             }
         }
 
+                
+        stage('Cleanup ') {
+            steps {
+                sh """
+                sh -c "echo Kill and delete containers !!!"
+                docker inspect ${CONTAINER01}
+                sh -c "echo Delete images !!!"
+                docker image inspect ${IMAGE01}
+                 """
+            }
+        }
 
      }
    

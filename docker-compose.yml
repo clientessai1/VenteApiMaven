@@ -4,7 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: aristidesama2/venteapimaven_3of3_app:v1
+    image: aristidesama2/venteapimaven_3of3_api:v1
+    container_name: venteapimaven_api
     restart: always
     ports:
       - 8080:8080
